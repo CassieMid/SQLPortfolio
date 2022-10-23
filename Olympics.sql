@@ -41,29 +41,29 @@ GROUP BY Games
 ORDER BY Games DESC
 
 -- Looking at which city had most olympians
-SELECT COUNT(ID) as Olympians, City
+SELECT COUNT(ID) as athletes, City
 FROM OlympicsProject..athlete_events
 GROUP BY City
-ORDER BY Olympians DESC
+ORDER BY athletes DESC
 
 -- Looking at which sport had the most participants
-SELECT COUNT(Sport) as Olympians, Sport
+SELECT COUNT(Sport) as athletes, Sport
 FROM OlympicsProject..athlete_events
 GROUP BY Sport
-ORDER BY Olympians DESC
+ORDER BY athletes DESC
 
 -- Seeing if theres a correlation between age and sport
-SELECT Age, COUNT(Sport) as Olympians, Sport
+SELECT Age, COUNT(Sport) as athletes, Sport
 FROM OlympicsProject..athlete_events
 GROUP BY Sport, Age
-ORDER BY Olympians DESC
+ORDER BY athletes DESC
 
 -- Seeing if a certain age wins more medals
-SELECT Age, COUNT(medal) as Olympians, medal
+SELECT Age, COUNT(medal) as athletes, medal
 FROM OlympicsProject..athlete_events
 WHERE medal <> 'NA'
 GROUP BY medal, Age
-ORDER BY Olympians DESC
+ORDER BY athletes DESC
 
 -- Looking at how many countries participate in each season
 
@@ -142,13 +142,13 @@ ORDER BY athletes DESC
 
 --Looking at which countries had the most olympians during certain years
 
-SELECT COUNT(ID) AS Olympians, co.region, Year
+SELECT COUNT(ID) AS athletes, co.region, Year
 FROM OlympicsProject..athlete_events ath
 JOIN OlympicsProject..country_definitions co
 	ON ath.NOC = co.NOC
 WHERE Year = 1896
 GROUP BY Year, co.region
-ORDER BY Olympians DESC
+ORDER BY athletes DESC
 
 SELECT Max(Year) as MaxYear, Min(Year) AS MinYear
 FROM OlympicsProject..athlete_events
